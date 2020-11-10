@@ -1,5 +1,5 @@
 #coding: utf-8
-
+#author：Sheng-Gong
 from PySide2.QtWidgets import *
 from PySide2.QtGui import QIcon
 from PySide2.QtGui import *
