@@ -1,10 +1,9 @@
 #coding: utf-8
-#author：Sheng-Gong
+
 from PySide2.QtWidgets import *
 from PySide2.QtGui import QIcon
 from PySide2.QtGui import *
 from PySide2.QtCore import *
-
 import os
 import sys
 import time 
@@ -403,10 +402,13 @@ class HDAManager(QWidget):
         for l in _assest_lib_list:
             _cb_Item = l.split("/")[-1]
             _cb_list.append(_cb_Item)
-            if "GsLib" in _cb_Item:
-                _iter_num = _iter
-            else:
-                pass
+            try:
+                if "GsLib" in _cb_Item:
+                    _iter_num = _iter
+                else:
+                    pass
+            except:
+                _iter_num=0
             _iter+=1
         self.cb.addItems(_cb_list)
         self.cb.setCurrentIndex(_iter_num) 
@@ -635,4 +637,6 @@ class HDAManager(QWidget):
             _tab_submenu= ""
         
         return _tab_submenu
-
+Dialog = HDAManager() 
+Dialog.setParent(hou.qt.mainWindow(),Qt.Window)
+Dialog.show()
